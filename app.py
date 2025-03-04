@@ -9,10 +9,11 @@ from google.oauth2 import service_account
 from streamlit_folium import folium_static
 
 
-credentials_path = st.secrets["gcp"]["credentials_path"]
+service_account_json = st.secrets["gcp_service_account"]
+service_account_dict = json.loads(service_account_json)
 
-
-credentials = service_account.Credentials.from_service_account_file(credentials_path)
+# Using the loaded credentials to authenticate with GCP
+credentials = service_account.Credentials.from_service_account_info(service_account_dict)
 client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
 @st.cache_data
@@ -25,14 +26,11 @@ def load_data():
 
 df = load_data()
 
-
 st.title("San Jose Crash Data Analysis (2022-Present)")
-
 
 st.sidebar.header("Filters")
 severity_filter = st.sidebar.multiselect("Select Injury Severity", ["Fatal", "Severe", "Moderate", "Minor"])
 weather_filter = st.sidebar.multiselect("Select Weather Condition", df['Weather'].unique())
-
 
 filtered_df = df.copy()
 
