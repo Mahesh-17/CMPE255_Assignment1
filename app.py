@@ -1,38 +1,41 @@
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/spartan/Desktop/CMPE 255/Assignments/service-account-file.json"
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import folium
 from folium.plugins import HeatMap  # type: ignore
 from google.cloud import bigquery
+from google.oauth2 import service_account
 from streamlit_folium import folium_static
 
-# Set up BigQuery client
-client = bigquery.Client()
 
+credentials_path = st.secrets["gcp"]["credentials_path"]
+
+
+credentials = service_account.Credentials.from_service_account_file(credentials_path)
+client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+
+@st.cache_data
 def load_data():
     query = """
     SELECT * FROM `concise-emblem-452601-s2.crash_data.crash_data_2022_present`
     """
     return client.query(query).to_dataframe()
 
-# Load data
+
 df = load_data()
 
-# Streamlit app
+
 st.title("San Jose Crash Data Analysis (2022-Present)")
 
-# Sidebar filters
+
 st.sidebar.header("Filters")
 severity_filter = st.sidebar.multiselect("Select Injury Severity", ["Fatal", "Severe", "Moderate", "Minor"])
 weather_filter = st.sidebar.multiselect("Select Weather Condition", df['Weather'].unique())
 
-# Filter data based on user input
+
 filtered_df = df.copy()
 
-# Adjust severity filter to use actual columns
 if severity_filter:
     severity_columns = {
         "Fatal": "FatalInjuries",
