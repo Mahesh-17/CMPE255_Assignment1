@@ -3,58 +3,30 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>San Jose Crash Data Visualization</h1>
-        <nav>
-          <a
-            href="https://mkbip97kyau73agra4wtob.streamlit.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Streamlit App
-          </a>
-          <a
-            href="https://lookerstudio.google.com/reporting/b908c1a1-c9a4-4760-9698-1459709da6c8/page/i3h4E"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Looker Studio Dashboard
-          </a>
-        </nav>
-      </header>
+    <div style={{ margin: "20px" }}>
+      <h1>San Jose Crash Data Visualization</h1>
 
-      <main>
-        <section id="streamlit">
-          <h2>Streamlit App</h2>
-          <p>
-            <a
-              href="https://mkbip97kyau73agra4wtob.streamlit.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to open Streamlit App
-            </a>
-          </p>
-        </section>
+      <section style={{ marginBottom: "40px" }}>
+        <h2>Streamlit Dashboard</h2>
+        <iframe
+          src="https://mkbip97kyau73agra4wtob.streamlit.app/?embed=true" // Replace with your deployed Streamlit URL
+          width="100%"
+          height="800"
+          title="Streamlit Dashboard"
+          style={{ border: "1px solid #ccc" }}
+        ></iframe>
+      </section>
 
-        <section id="looker-studio">
-          <h2>Looker Studio Dashboard</h2>
-          <p>
-            <a
-              href="https://lookerstudio.google.com/reporting/b908c1a1-c9a4-4760-9698-1459709da6c8/page/i3h4E"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to open Looker Studio Dashboard
-            </a>
-          </p>
-        </section>
-      </main>
-
-      <footer>
-        <p>San Jose Crash Data Visualization &copy; 2025</p>
-      </footer>
+      <section>
+        <h2>Looker Studio Dashboard</h2>
+        <iframe
+          src="https://lookerstudio.google.com/embed/reporting/b908c1a1-c9a4-4760-9698-1459709da6c8/page/i3h4E" // Replace with your Looker Studio embed URL
+          width="100%"
+          height="800"
+          title="Looker Studio Dashboard"
+          style={{ border: "1px solid #ccc" }}
+        ></iframe>
+      </section>
     </div>
   );
 }
