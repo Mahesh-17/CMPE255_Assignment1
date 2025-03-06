@@ -9,7 +9,7 @@ function App() {
       <section style={{ marginBottom: "40px" }}>
         <h2>Streamlit Dashboard</h2>
         <iframe
-          src="https://mkbip97kyau73agra4wtob.streamlit.app/?embed=true" // Replace with your deployed Streamlit URL
+          src="https://mkbip97kyau73agra4wtob.streamlit.app/?embed=true"
           width="100%"
           height="800"
           title="Streamlit Dashboard"
@@ -20,7 +20,7 @@ function App() {
       <section>
         <h2>Looker Studio Dashboard</h2>
         <iframe
-          src="https://lookerstudio.google.com/embed/reporting/b908c1a1-c9a4-4760-9698-1459709da6c8/page/i3h4E" // Replace with your Looker Studio embed URL
+          src="https://lookerstudio.google.com/embed/reporting/b908c1a1-c9a4-4760-9698-1459709da6c8/page/i3h4E"
           width="100%"
           height="800"
           title="Looker Studio Dashboard"
